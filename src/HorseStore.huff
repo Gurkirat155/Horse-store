@@ -1,0 +1,9 @@
+
+
+
+// 60008060093d393df3 -- Contract creation bytecode (This is what is deployed on on chain)
+
+#define macro MAIN() = takes(0) returns(0) {
+    0x00  //[0]  thi is how stack looks like
+    calldataload  // [calldata]
+}
