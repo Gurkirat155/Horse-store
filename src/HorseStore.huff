@@ -3,7 +3,22 @@
 
 // 60008060093d393df3 -- Contract creation bytecode (This is what is deployed on on chain)
 
+// 0xe02600170000000000000000000000000000000000000000000000000000000000000001
 #define macro MAIN() = takes(0) returns(0) {
     0x00  //[0]  thi is how stack looks like
     calldataload  // [calldata]
+
+    // 0xe0260017 0000000000 0000000000 0000000000 0000000000 0000000000 000000 00000001
+    // So we need to shift 56 places to the right or 28 bytes to the right or 224 bits the right
+    // 64/2 = 32 bytes
+    // cast to-base 224 hex we get 0xe0(this is number of places we need to shift in hex)
+    0xe0      //top [0xe0,calldata] bottom
+    shr
+    // This leaves us now with the function selector viz (0xe0260017)
+
+    // Jump --> Function data associated with the function selector
+    // if f_select = updateNumberOfHorses --> Jump to that code
+    // if f_select = viewNumberOfHorses --> Jump to that code
+    // 0x67d41eca == updateNumberOfHorses
+    // 0xa64569ad == viewNumberOfHorses
 }
