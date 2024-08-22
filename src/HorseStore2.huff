@@ -1,0 +1,61 @@
+/* INTERFACE */
+
+#define function updateNumberOfHorses(uint256) nonpayable returns()
+
+#define function viewNumberOfHorses() view returns(uint256)
+
+/* STATE STORAGE SLOTS */
+#define constant STORAGE_SLOT1 = FREE_STORAGE_POINTER()
+
+#define macro MAIN() = takes(0) returns(0) {
+    // input data is 
+    // 0x67d41eca 0000000000 0000000001
+    // 0x67d41eca00000000000000000001
+    0x00 calldataload 0xe0 shr  
+    dup1 
+    __FUNC_SIG(updateNumberOfHorses) eq
+    updateHorses
+    jumpi
+
+    __FUNC_SIG(viewNumberOfHorses) eq
+    readHorses
+    jumpi
+    0x00 0x00 revert
+
+    updateHorses:
+        SET_NUMBER_OF_HORSES()
+
+    readHorses:
+        READ_NUMBER_OF_HORSES()
+
+}
+
+#define macro SET_NUMBER_OF_HORSES() = takes(0) returns(0){
+    // 1 load the value form the call data
+    0x04 calldataload 
+    // 2 take the storage slot for state variable
+    [STORAGE_SLOT1]
+    // 3 store it in state variable
+    sstore
+    stop
+}
+
+#define macro READ_NUMBER_OF_HORSES() = takes(0)  returns(0){
+    // 1 load the value from state storage slot
+    [STORAGE_SLOT1]
+    sload
+    // 2 it will load in stack now store it in memory
+    // TO stor in memory same it has to alot a storage slot
+    [STORAGE_SLOT1]  //In memory not in storage
+    mstore
+    // 3 return from the memory
+    0x20
+    [STORAGE_SLOT1]
+    return
+}
+// 000000 0000000000 0000000000 0000000000 0000000000
+// 67d41eca 000000 0000000000 0000000000 0000000000 0000000000 0000000000
+// 67d41eca 00000000000000000000000000000000000000000000000000000000
+// 67d41eca000000000000000000000000000000000000000000000000000000000 0000000005
+// 67d41eca 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000054
+
