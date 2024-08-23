@@ -7,7 +7,7 @@
 /* Interface*/
 
 #define function updateNumberOfHorses(uint256) nonpayable returns()
-#define function viewNumberOfHorses(uint256) view returns(uint256)
+#define function viewNumberOfHorses() view returns(uint256)
 
 #define constant NUMBER_OF_HORSES_STORAGE_SLOT1 = FREE_STORAGE_POINTER()  
 #define constant NUMBER_OF_HORSES_STORAGE_SLOT2 = FREE_STORAGE_POINTER()  
@@ -33,7 +33,7 @@
     // if f_select = updateNumberOfHorses --> Jump to that code
     // if f_select = viewNumberOfHorses --> Jump to that code
     // 0x67d41eca == updateNumberOfHorses
-    // 0xa64569ad == viewNumberOfHorses
+    // 0x1afef78d == viewNumberOfHorses
 
     dup1  //This duplicates the value present at index 1 of the stack
     // [function_selector, function_selector]

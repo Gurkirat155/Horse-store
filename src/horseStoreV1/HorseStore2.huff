@@ -46,7 +46,7 @@
     sload
     // 2 it will load in stack now store it in memory
     // TO stor in memory same it has to alot a storage slot
-    [STORAGE_SLOT1]  //In memory not in storage
+    0x00  //In memory not in storage
     mstore
     // 3 return from the memory
     0x20

@@ -25,3 +25,7 @@ CALLDATALOAD can only take place 32 bytes of calldata onto the stack
 1 byte = 8 bits
 
 Main data structure we are wokring in ethereum is stack, 
+
+
+For running particular file in below case it's huff and debug a particular function 
+forge test --match-path ./test/testV1/HorseStoreHuff.t.sol --debug  testUpdateHorses
