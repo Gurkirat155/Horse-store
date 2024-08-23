@@ -1,16 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
-contract horseStore {
-
+contract HorseStore {
     uint256 numberOfHorses;
 
     function updateNumberOfHorses(uint256 updateNumber) external {
-        numberOfHorses = updateNumber ;
+        numberOfHorses = updateNumber;
     }
 
-
-    function viewNumberOfHorses() external view returns(uint256) {
+    function viewNumberOfHorses() external view returns (uint256) {
         return numberOfHorses;
     }
 }
