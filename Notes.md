@@ -29,3 +29,9 @@ Main data structure we are wokring in ethereum is stack,
 
 For running particular file in below case it's huff and debug a particular function 
 forge test --match-path ./test/testV1/HorseStoreHuff.t.sol --debug  testUpdateHorses
+
+
+Why do we need free memory pointers during deployment when we get opcodes like 
+"0x80 0x40 MSTORE"
+because stack itself has less slots for storing data (0x40 in special space in solidity in memory space as it points to the next empty free memory slot)
+![alt text](<Screenshot 2024-08-27 at 10.57.08 PM.png>)
