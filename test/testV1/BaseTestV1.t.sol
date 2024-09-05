@@ -18,8 +18,7 @@ abstract contract TestBaseHorse is Test {
         assertEq(valueOfHorses, 0);
     }
 
-    function testUpdateHorses() public {
-        uint256 updateValue = 5139;
+    function testUpdateHorses(uint256 updateValue) public {
         horseStore.updateNumberOfHorses(updateValue);
         uint256 currentValueHorses = horseStore.viewNumberOfHorses();
         assertEq(currentValueHorses, updateValue);
