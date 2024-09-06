@@ -1,3 +1,8 @@
+ 
+# HorseStore Smart Contract
+
+This repository contains two implementations of the `HorseStore` smart contract: one in Solidity and one in Huff, a low-level EVM assembly language. The contract is responsible for storing and managing the number of horses. The two main functions are `updateNumberOfHorses` and `viewNumberOfHorses`.
+
 # Table of Contents
 
 - [HorseStore Smart Contract](#horsestore-smart-contract)
@@ -17,12 +22,6 @@
   - [Automated Solidity Compiler Checks vs Huff Dispatcher](#automated-solidity-compiler-checks-vs-huff-dispatcher)
   - [Function Dispatching vs Function Selector in Solidity](#function-dispatching-vs-function-selector-in-solidity)
  
-  
-# HorseStore Smart Contract
-
-This repository contains two implementations of the `HorseStore` smart contract: one in Solidity and one in Huff, a low-level EVM assembly language. The contract is responsible for storing and managing the number of horses. The two main functions are `updateNumberOfHorses` and `viewNumberOfHorses`.
-
-
 ## Solidity Version
 
 ### Contract Overview
