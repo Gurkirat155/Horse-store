@@ -5,7 +5,7 @@ This repository contains two implementations of the `HorseStore` smart contract:
 
 # Table of Contents
 
-- [HorseStore Smart Contract](#horsestore-smart-contract)
+
   - [Solidity Version](#solidity-version)
     - [Contract Overview](#contract-overview)
     - [Compiled Bytecode Breakdown](#compiled-bytecode-breakdown)
