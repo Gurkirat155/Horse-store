@@ -1,0 +1,119 @@
+/* IMPORTS */
+#include "../../lib/huffmate/src/data-structures/Hashmap.huff"
+
+
+/* INTERFACE */
+
+// FUCNTIONS
+#define function mintHorse() nonpayable returns()
+#define function feedHorse(uint256) view returns()
+#define function isHappyHorse(uint256) view returns(bool)
+#define function horseIdToFedTimeStamp(uint256) view returns(uint256)
+// #define function HORSE_HAPPY_IF_FED_WITHIN = FREE_STORAGE_POINTER()
+#define function HORSE_HAPPY_IF_FED_WITHIN() view returns(uint256)
+
+
+// CONSTANTS
+#define constant NFT_NAME = FREE_STORAGE_POINTER()
+#define constant NFT_SYMBOL = FREE_STORAGE_POINTER()
+#define constant LAST_HORSE_FED_MAPPING_STORAGE  =  FREE_STORAGE_POINTER()
+#define constant HAPPY_HORSES_STORAGE  =  FREE_STORAGE_POINTER()
+
+// 0x61fc6a67   mintHorse()
+// 0xc65e2eaa   feedHorse(uint256 horseId)
+// 0x62134726   isHappyHorse(uint256 horseId)
+// 0xf163af78   horseIdToFedTimeStamp(uint256)  as this is public variable so treat like getter function 
+// 0x8c1d96ae   HORSE_HAPPY_IF_FED_WITHIN()
+
+#define macro MAIN() = takes(0) returns(0) {
+    0x00 calldataload 0xe0 shr      //[func_selctr]
+
+    dup1    //[func_selctr, func_selctr]
+    __FUNC_SIG(mintHorse) eq mintHorses jumpi      //[func_selctr]
+
+    dup1    //[func_selctr, func_selctr]
+    __FUNC_SIG(feedHorse) eq feedHorses jumpi      //[func_selctr]
+
+    dup1    //[func_selctr, func_selctr]
+    __FUNC_SIG(isHappyHorse) eq happyHorses jumpi  //[func_selctr]
+
+    dup1    //[func_selctr, func_selctr]
+    __FUNC_SIG(horseIdToFedTimeStamp) eq timesHorsesWereFed jumpi  //[func_selctr]
+
+    dup1    //[func_selctr, func_selctr]
+    __FUNC_SIG(HORSE_HAPPY_IF_FED_WITHIN) eq frequencyOfFeeding jumpi  //[func_selctr]
+
+    mintHorses:
+        MINT_HORSES()
+
+    feedHorses:
+        FEED_HORSES()
+    
+    happyHorses:
+        HAPPY_HORSES()
+    
+    timesHorsesWereFed:
+        TIMES_HORSES_WERE_FED()
+    
+    frequencyOfFeeding:
+        FREQUENCY_OF_FEEDING()
+}
+
+//takes (0) means it doesn't take any input from stack and returns(0)means it doesn't return something to the stack
+#define macro MINT_HORSES() = takes(0) returns(0){       
+
+}
+
+
+#define macro FEED_HORSES() = takes(0) returns(0){       
+    //[func_selctr]
+    timestamp                //[timestamp, func_selectr]
+    0x04 calldataload        //[calldata[0x04], timestamp, func_selectr]     calldata[0x04] === horseId 
+    [LAST_HORSE_FED_MAPPING_STORAGE]       //[STORAGE_SLOT, calldata[0x04], timestamp, func_selectr] 
+    STORE_ELEMENT_FROM_KEYS(0x00)
+    stop
+    // [STORAGE_SLOT1]         //[storagelslot, timestamp, calldata[0x04], func_selctr]
+    // sstore                  //[func_selctr]
+    // stop
+
+    // 0x0calldataload
+}
+
+
+#define macro HAPPY_HORSES() = takes(0) returns(0){       
+
+
+}
+
+
+#define macro TIMES_HORSES_WERE_FED() = takes(0) returns(0){       
+    //Get it from storage 
+    // Store it on memory 
+    // Return from memory
+
+    //[func_selctr]
+    0x04 calldataload      
+    LOAD_ELEMENT_FROM_KEYS(0x00)
+
+    0x00 mstore
+
+    0x20 0x00 return
+
+}
+
+
+#define macro FREQUENCY_OF_FEEDING() = takes(0) returns(0){ 
+    //Get it from storage by storage slot 
+    // Store it on memory 
+    // Return from memory
+    //[func_selctr] 
+         
+    [HAPPY_HORSES_STORAGE]
+    sload
+
+    0x00 mstore
+
+    0x20 0x00 return
+}
+
+

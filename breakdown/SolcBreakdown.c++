@@ -168,6 +168,7 @@ JUMPDEST        //[0x00, 0x04, call_data_size, 0x53, 0x57, func_selector]
 POP             //[0x04, call_data_size, 0x53, 0x57, func_selector]
 // call_data_value[0x04] means ignore the 4 bytes or function selctor and load the data in msg.value
 // call_data_value[0x04] == 0000000000000000000000000000000000000000000000000000000000000007 is in stack
+// CALLDATALOAD will do this as make 0x04, call_data_size on stack to call_data_value[0x04]
 // 0x1afef78d ignored in calldata by putting in 0x04 in calldataload and 0000000000000000000000000000000000000000000000000000000000000007 is in stack
 //  data_Sent == call_data_value[0x04] ==  0000000000000000000000000000000000000000000000000000000000000007
 CALLDATALOAD    //[data_Sent, call_data_size, 0x53, 0x57, func_selector]
