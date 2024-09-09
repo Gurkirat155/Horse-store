@@ -6,9 +6,9 @@ This repository contains two implementations of the `HorseStore` smart contract:
 # Table of Contents
 
 
-  - [Solidity Version](#solidity-version)
-    - [Contract Overview](#contract-overview)
-    - [Compiled Bytecode Breakdown](#compiled-bytecode-breakdown)
+
+  - [Contract Overview](#contract-overview)
+  - [Compiled Bytecode Breakdown](#compiled-bytecode-breakdown)
   - [Huff Version](#huff-version)
     - [Huff Contract Overview](#huff-contract-overview)
   - [Solidity Compiler Bytecode Overview](#solidity-compiler-bytecode-overview)
@@ -22,15 +22,13 @@ This repository contains two implementations of the `HorseStore` smart contract:
   - [Automated Solidity Compiler Checks vs Huff Dispatcher](#automated-solidity-compiler-checks-vs-huff-dispatcher)
   - [Function Dispatching vs Function Selector in Solidity](#function-dispatching-vs-function-selector-in-solidity)
  
-## Solidity Version
-
-### Contract Overview
+## Contract Overview
 The Solidity version of the contract defines two simple read and write functions:
 
 - `updateNumberOfHorses(uint256)`: Updates the stored number of horses.
 - `viewNumberOfHorses()`: Returns the current number of horses.
 
-### Compiled Bytecode Breakdown
+## Compiled Bytecode Breakdown
 The compiled bytecode generated from this contract includes:
 
 - **Contract creation code**: Responsible for deploying the contract.
